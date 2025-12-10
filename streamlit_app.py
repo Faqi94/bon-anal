@@ -121,7 +121,7 @@ def render_segment(seg_name: str, seg_df: pd.DataFrame, main_segment: bool = Fal
         k1, k2, k3, k4 = st.columns(4)
         k1.metric("Total Pencairan", format_singkat(total_kasbon))
         k2.metric("Total Transaksi", format_int(total_trx))
-        k3.metric("Rata-rata Pinjaman", format_singkat(avg_ticket))
+        k3.metric("Rata-rata Pengambilan", format_singkat(avg_ticket))
         k4.metric("User Unik", format_int(total_user))
         st.markdown("---")
     else:

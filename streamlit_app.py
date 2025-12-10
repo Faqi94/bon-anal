@@ -40,13 +40,14 @@ def create_chart_image(fig, filename: str) -> str:
     return path
 
 # --- Header ---
-st.title("🚀 Dashboard Analitik Kasbon (Versi Pro: Gabungan, EWA, PPOB)")
+st.title("🚀 Dashboard Analitik EWA & PPOB")
 st.markdown(
     """
     1. Upload file Excel (`.xlsx`) berisi data kasbon.  
     2. Sistem akan otomatis membaca data & menampilkan dashboard.  
     3. Analitik tersedia untuk **gabungan (EWA + PPOB)**, khusus **EWA saja**, dan khusus **PPOB saja**.  
     4. Di akhir, kamu bisa **generate laporan PDF** lengkap untuk manajemen.
+    dibuat oleh Team RnD Byru!
     """
 )
 

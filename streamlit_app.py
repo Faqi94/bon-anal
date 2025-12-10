@@ -47,7 +47,7 @@ st.markdown(
     2. Sistem akan otomatis membaca data & menampilkan dashboard.  
     3. Analitik tersedia untuk **gabungan (EWA + PPOB)**, khusus **EWA saja**, dan khusus **PPOB saja**.  
     4. Di akhir, kamu bisa **generate laporan PDF** lengkap untuk manajemen.
-    dibuat oleh Team RnD Byru!
+    5. dibuat oleh Team RnD Byru.
     """
 )
 

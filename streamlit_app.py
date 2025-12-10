@@ -127,9 +127,9 @@ def render_segment(seg_name: str, seg_df: pd.DataFrame, main_segment: bool = Fal
     else:
         st.markdown(f"### 📂 Ringkasan Segmen: {seg_name}")
         st.write(
-            f"- Total kasbon: **{format_rupiah(total_kasbon)}** dari **{format_int(total_trx)}** transaksi "
+            f"- Total EWA: **{format_rupiah(total_kasbon)}** dari **{format_int(total_trx)}** transaksi "
             f"oleh **{format_int(total_user)}** user unik.  \n"
-            f"- Rata-rata tiket: **{format_rupiah(avg_ticket)}**, tiket terbesar: **{format_rupiah(max_ticket)}**."
+            f"- Rata-rata pengajuan: **{format_rupiah(avg_ticket)}**, pengajuan terbesar: **{format_rupiah(max_ticket)}**."
         )
 
     # ==============================================================
@@ -137,7 +137,7 @@ def render_segment(seg_name: str, seg_df: pd.DataFrame, main_segment: bool = Fal
     # ==============================================================
     df_seg["Bulan_Str"] = df_seg["Tanggal Approved"].dt.strftime("%b-%y")
 
-    st.subheader(f"1. Tren Keuangan Bulanan – {seg_name}")
+    st.subheader(f"1. Tren Bulanan – {seg_name}")
     monthly_stats = (
         df_seg.groupby("Bulan_Str", sort=False)["Total Kasbon"]
         .agg(["sum", "count"])
@@ -367,7 +367,7 @@ def render_segment(seg_name: str, seg_df: pd.DataFrame, main_segment: bool = Fal
 
         ax3.set_xlabel("Total Nilai Pinjaman (Rp)", fontsize=11)
         ax3.set_title(
-            f"Top 10 Karyawan Paling Boros (Nominal) – {seg_name}",
+            f"Top 10 Karyawan Paling EWA (Nominal) – {seg_name}",
             fontsize=14,
             pad=15,
         )
@@ -431,7 +431,7 @@ def render_segment(seg_name: str, seg_df: pd.DataFrame, main_segment: bool = Fal
         st.dataframe(table_df[display_cols], use_container_width=True)
 
     _render_top_table(
-        top_users_amount, f"Detail Top 10 Karyawan Paling Boros – {seg_name}"
+        top_users_amount, f"Detail Top 10 Karyawan Paling EWA – {seg_name}"
     )
     _render_top_table(
         top_users_qty,
@@ -778,7 +778,7 @@ if uploaded_file is not None:
                         # -----------------------------
                         # 3. TOP 10 PALING BOROS
                         # -----------------------------
-                        pdf.chapter_title("3. Top 10 Karyawan Paling Boros - Gabungan")
+                        pdf.chapter_title("3. Top 10 Karyawan Paling EWA - Gabungan")
                         if path_chart3_all and os.path.exists(path_chart3_all):
                             pdf.image(path_chart3_all, w=180)
                             pdf.ln(5)

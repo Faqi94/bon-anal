@@ -799,4 +799,4 @@ if uploaded_file is not None:
         st.error(f"Terjadi error: {e}")
 
 else:
-    st.info("Silakan upload file Excel terlebih dahulu untuk memulai analisis kasbon.")
+    st.info("Silakan upload file Excel terlebih dahulu untuk memulai analisis.")

@@ -513,7 +513,7 @@ def render_segment(seg_name: str, seg_df: pd.DataFrame, main_segment: bool = Fal
         f"📌 **Kontribusi Akhir Pekan (Sabtu & Minggu) – {seg_name}**: "
         f"{format_rupiah(weekend_amount)} dari {format_rupiah(total_amount_all)} "
         f"({weekend_amount_pct:.1f}% dari total nominal kasbon, "
-        f"{format_int(weekend_trx)} dari {format_int(total_trx_all)} transaksi /
+        f"{format_int(weekend_trx)} dari {format_int(total_trx_all)} transaksi / "
         f"{weekend_trx_pct:.1f}% dari total transaksi)."
     )
 

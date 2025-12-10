@@ -15,6 +15,13 @@ def format_rupiah(value: float) -> str:
     except Exception:
         return "Rp 0"
 
+def format_int(num) -> str:
+    """Format integer dengan pemisah ribuan '.' (contoh: 50.579)"""
+    try:
+        return f"{int(num):,}".replace(",", ".")
+    except Exception:
+        return "0"
+
 def format_singkat(num: float) -> str:
     """Mengubah angka besar menjadi format pendek (2M, 500jt, 10k)"""
     try:
@@ -113,15 +120,15 @@ def render_segment(seg_name: str, seg_df: pd.DataFrame, main_segment: bool = Fal
         st.markdown("### 💰 Ringkasan Performa (Gabungan EWA + PPOB)")
         k1, k2, k3, k4 = st.columns(4)
         k1.metric("Total Pencairan", format_singkat(total_kasbon))
-        k2.metric("Total Transaksi", f"{total_trx}")
+        k2.metric("Total Transaksi", format_int(total_trx))
         k3.metric("Rata-rata Pinjaman", format_singkat(avg_ticket))
-        k4.metric("User Unik", total_user)
+        k4.metric("User Unik", format_int(total_user))
         st.markdown("---")
     else:
         st.markdown(f"### 📂 Ringkasan Segmen: {seg_name}")
         st.write(
-            f"- Total kasbon: **{format_rupiah(total_kasbon)}** dari **{total_trx}** transaksi "
-            f"oleh **{total_user}** user unik.  \n"
+            f"- Total kasbon: **{format_rupiah(total_kasbon)}** dari **{format_int(total_trx)}** transaksi "
+            f"oleh **{format_int(total_user)}** user unik.  \n"
             f"- Rata-rata tiket: **{format_rupiah(avg_ticket)}**, tiket terbesar: **{format_rupiah(max_ticket)}**."
         )
 
@@ -469,7 +476,7 @@ def render_segment(seg_name: str, seg_df: pd.DataFrame, main_segment: bool = Fal
         ax4.text(
             bar.get_x() + bar.get_width() / 2.0,
             height + (max_trx * 0.03 if max_trx > 0 else 0.1),
-            f"{int(height)}",
+            format_int(height),
             ha="center",
             va="bottom",
             fontsize=10,
@@ -506,7 +513,7 @@ def render_segment(seg_name: str, seg_df: pd.DataFrame, main_segment: bool = Fal
         f"📌 **Kontribusi Akhir Pekan (Sabtu & Minggu) – {seg_name}**: "
         f"{format_rupiah(weekend_amount)} dari {format_rupiah(total_amount_all)} "
         f"({weekend_amount_pct:.1f}% dari total nominal kasbon, "
-        f"{weekend_trx} dari {total_trx_all} transaksi / "
+        f"{format_int(weekend_trx)} dari {format_int(total_trx_all)} transaksi /
         f"{weekend_trx_pct:.1f}% dari total transaksi)."
     )
 

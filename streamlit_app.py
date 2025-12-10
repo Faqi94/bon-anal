@@ -367,7 +367,7 @@ def render_segment(seg_name: str, seg_df: pd.DataFrame, main_segment: bool = Fal
 
         ax3.set_xlabel("Total Nilai Pinjaman (Rp)", fontsize=11)
         ax3.set_title(
-            f"Top 10 Karyawan Paling EWA (Nominal) – {seg_name}",
+            f"Top Amount 10 Karyawan (Nominal) – {seg_name}",
             fontsize=14,
             pad=15,
         )
@@ -431,7 +431,7 @@ def render_segment(seg_name: str, seg_df: pd.DataFrame, main_segment: bool = Fal
         st.dataframe(table_df[display_cols], use_container_width=True)
 
     _render_top_table(
-        top_users_amount, f"Detail Top 10 Karyawan Paling EWA – {seg_name}"
+        top_users_amount, f"Detail Top Amount 10 Karyawan – {seg_name}"
     )
     _render_top_table(
         top_users_qty,
@@ -778,7 +778,7 @@ if uploaded_file is not None:
                         # -----------------------------
                         # 3. TOP 10 PALING BOROS
                         # -----------------------------
-                        pdf.chapter_title("3. Top 10 Karyawan Paling EWA - Gabungan")
+                        pdf.chapter_title("3. Top Amount 10 Karyawan - Gabungan")
                         if path_chart3_all and os.path.exists(path_chart3_all):
                             pdf.image(path_chart3_all, w=180)
                             pdf.ln(5)
